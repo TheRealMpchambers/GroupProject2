@@ -1,5 +1,17 @@
 body {
+  /* Change this when server up and running */
   background-image: url("../img/landingpage/beam-cabin-clouds-531450.jpg");
   background-repeat: no-repeat;
-  background-size: 100%
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.jumbotron {
+  opacity: .75;
+  padding: 15px;
+}
+
+.card {
+  opacity: .75;
+  height: 20rem;
 }
