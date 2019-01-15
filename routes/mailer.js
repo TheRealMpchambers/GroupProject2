@@ -11,14 +11,11 @@ var nodemailer = require("nodemailer");
 
 // object that wraps up the mailer functions
 var mailer = {
-    // function the sends email to the next person in the queue, the one next to make a choice
+    // function the sends email to the next person in the queue, the one next to make a choice. Takes in their email address and name.
     sendMessageToNext: async function (recipientEmail, recipientName) {
         // sets up the email
         var transporter = nodemailer.createTransport({
-            name: "www.ethereal.email",
-            host: "smtp.ethereal.email",
-            port: 587,
-            secure: false,
+            service: "gmail",
             auth: {
                 user: keys.username,
                 pass: keys.password
@@ -61,7 +58,7 @@ var mailer = {
 
         // the object that gets passed to transporter.sendMail
         var message = {
-            from: "scheduler@cabin.com",
+            from: "fightingmongooses4@gmail.com",
             to: recipientEmail,
             subject: recipientName + ": It is your turn to schedule the cabin!",
             text: buildPlaintextMessage(recipientName),
@@ -74,20 +71,17 @@ var mailer = {
         // testing functions that report if the mail sent
         console.log("Message sent: %s", info.messageId);
         // below console.log only works on ehtereal
-        console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
+        // console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
         console.log(info.response);
 
         // below bracket closes the wrapper function
     },
 
-    // function that sends email to the person who just selected their week at the cabin
+    // function that sends email to the person who just selected their week at the cabin. Takes in their email address, name, begin date of reservation, end date of reservation.
     sendMessageToCurrent: async function (recipientEmail, recipientName, beginDate, endDate) {
         // sets up the email
         var transporter = nodemailer.createTransport({
-            name: "www.ethereal.email",
-            host: "smtp.ethereal.email",
-            port: 587,
-            secure: false,
+            service: "gmail",
             auth: {
                 user: keys.username,
                 pass: keys.password
@@ -130,7 +124,7 @@ var mailer = {
 
         // the object that gets passed to transporter.sendMail
         var message = {
-            from: "scheduler@cabin.com",
+            from: "fightingmongooses4@gmail.com",
             to: recipientEmail,
             subject: recipientName + ": You've scheduled your week at the cabin!",
             text: buildPlaintextMessage(recipientName, beginDate, endDate),
@@ -143,7 +137,7 @@ var mailer = {
         // testing functions that report if the mail sent
         console.log("Message sent: %s", info.messageId);
         // below console.log only works on ethereal
-        console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
+        // console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
         console.log(info.response);
 
         // below bracket closes the wrapper function
@@ -156,5 +150,5 @@ module.exports = mailer;
 // testing functions called
 
 // mailer.sendMessageToCurrent("test@test.com", "Julie", "01/01/2019", "01/08/2019");
-// mailer.sendMessageToNext("test2@test.com", "Eric");
+// mailer.sendMessageToNext("test@test.com", "Eric");
 
