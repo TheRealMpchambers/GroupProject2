@@ -2,6 +2,7 @@
   "development": {
     "username": "root",
     "password": "0Briekev!",
+
     "database": "cabin_db",
     "host": "localhost",
     "dialect": "mysql"
