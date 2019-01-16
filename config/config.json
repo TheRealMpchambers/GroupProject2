@@ -1,8 +1,8 @@
 {
   "development": {
     "username": "root",
-    "password": "vegetable",
-    "database": "exampledb",
+    "password": "0Briekev!",
+    "database": "cabin_db",
     "host": "localhost",
     "dialect": "mysql"
   },

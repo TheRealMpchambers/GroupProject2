@@ -10,7 +10,12 @@
 	<script src='../jquery/jquery-ui.custom.min.js'></script>
 
 	<script src='../public/js/fullcalendar.js'></script>
-	<script>
+	<script type="text/javascript">
+
+
+
+
+
 		$(document).ready(function () {
 			var date = new Date();
 			var d = date.getDate();
@@ -26,6 +31,14 @@
 
 			/* initialize the external events
 			-----------------------------------------------------------------*/
+
+
+			$('button').on('click', function() {
+			console.log("hello, is it me you're looking for?")
+
+
+		});
+
 
 			$('#external-events div.external-event').each(function () {
 
@@ -115,51 +128,78 @@
 
 				},
 
+
+
+
+	
+				//Load the weeks from MySQL
+				
+
+
 				events: [{
-						title: 'All Day Event',
-						start: new Date(y, m, 1)
-					},
-					{
-						id: 999,
-						title: 'Repeating Event',
-						start: new Date(y, m, d - 3, 16, 0),
-						allDay: false,
-						className: 'info'
-					},
-					{
-						id: 999,
-						title: 'Repeating Event',
-						start: new Date(y, m, d + 4, 16, 0),
-						allDay: false,
-						className: 'info'
-					},
-					{
-						title: 'Meeting',
-						start: new Date(y, m, d, 10, 30),
-						allDay: false,
-						className: 'important'
-					},
-					{
-						title: 'Lunch',
-						start: new Date(y, m, d, 12, 0),
-						end: new Date(y, m, d, 14, 0),
-						allDay: false,
-						className: 'important'
-					},
-					{
-						title: 'Birthday Party',
-						start: new Date(y, m, d + 1, 19, 0),
-						end: new Date(y, m, d + 1, 22, 30),
-						allDay: false,
-					},
-					{
-						title: 'Click for Google',
-						start: new Date(y, m, 28),
-						end: new Date(y, m, 29),
-						url: 'http://google.com/',
-						className: 'success'
-					}
-				],
+					title: "Test Vacation week",
+					start: new Date(y, 0, 28),
+					end: new Date(y, 0, 29),
+					color: "#378006"
+				}],
+
+
+
+
+
+				// events: [{
+				// 		title: 'All Day Event',
+				// 		start: new Date(y, m, 1)
+				// 	},
+				// 	{
+				// 		id: 999,
+				// 		title: 'Repeating Event',
+				// 		start: new Date(y, m, d - 3, 16, 0),
+				// 		allDay: false,
+				// 		className: 'info'
+				// 	},
+				// 	{
+				// 		id: 999,
+				// 		title: 'Repeating Event',
+				// 		start: new Date(y, m, d + 4, 16, 0),
+				// 		allDay: false,
+				// 		className: 'info'
+				// 	},
+				// 	{
+				// 		title: 'Meeting',
+				// 		start: new Date(y, m, d, 10, 30),
+				// 		allDay: false,
+				// 		className: 'important'
+				// 	},
+				// 	{
+				// 		title: 'Lunch',
+				// 		start: new Date(y, m, d, 12, 0),
+				// 		end: new Date(y, m, d, 14, 0),
+				// 		allDay: false,
+				// 		className: 'important'
+				// 	},
+				// 	{
+				// 		title: 'Birthday Party',
+				// 		start: new Date(y, m, d + 1, 19, 0),
+				// 		end: new Date(y, m, d + 1, 22, 30),
+				// 		allDay: false,
+				// 	},
+				// 	{
+				// 		title: 'Click for Google',
+				// 		start: new Date(y, m, 28),
+				// 		end: new Date(y, m, 29),
+				// 		url: 'http://google.com/',
+				// 		className: 'success'
+				// 	},
+				// 	{
+				// 		title: "Erik's Week",
+				// 		start: new Date(2019, 6, 1),
+				// 		end: new Date(2019, 6, 7),
+				// 		// url: 'http://google.com/',
+				// 		className: 'important',
+				// 		editable: true
+				// 	}
+				// ],
 			});
 
 
@@ -225,19 +265,8 @@
 </head>
 
 <body>
-	<div class="container">
-		<div class="jumbotron">
-			<div class="wrap">
-				<div class="card-body">
-					<h5 class="card-title">CARD ONE</h5>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<div class="container">
-		<div class="jumbotron">
-			<div id='wrap'>
+	<button>Load data</button>
+	<div id='wrap'>
 
 				<div id='calendar'></div>
 
