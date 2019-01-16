@@ -2,17 +2,28 @@
 a,
 a:focus,
 a:hover {
-  color: #fff;
+  color: #1D1309;
+}
+
+p a {
+  color:#E6E4DE;
+  -webkit-text-stroke: 1px black;
+  text-shadow:
+      3px 3px 0  #1D1309,
+    -1px -1px 0  #1D1309,  
+     1px -1px 0  #1D1309,
+     -1px 1px 0  #1D1309,
+      1px 1px 0  #1D1309;
 }
 
 /* Custom default button */
 .btn-secondary,
 .btn-secondary:hover,
 .btn-secondary:focus {
-  color: #333;
+  color: #1D1309;
   text-shadow: none; /* Prevent inheritance from `body` */
-  background-color: #fff;
-  border: .05rem solid #fff;
+  background-color:#E6E4DE;
+  border: .05rem solid #1D1309;
 }
 
 html,
@@ -24,9 +35,10 @@ body {
   background-size: cover;
 }
 body {
-  color: #fff;
+  color: #1D1309;
   text-align: center;
   text-shadow: 0 .05rem .1rem rgba(0,0,0,.5);
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
 }
 
 /* Extra markup and styles for table-esque vertical and horizontal centering */
@@ -50,6 +62,8 @@ body {
 /* Padding for spacing */
 .inner {
   padding: 2rem;
+  font-size: 28px;
+  font-weight: bold;
 }
 
 
@@ -68,7 +82,7 @@ body {
 .nav-masthead .nav-link {
   padding: .25rem 0;
   font-weight: bold;
-  color: rgba(255,255,255,.5);
+  color:#8EA6C0;
   background-color: transparent;
   border-bottom: .25rem solid transparent;
 }
@@ -83,8 +97,8 @@ body {
 }
 
 .nav-masthead .active {
-  color: #fff;
-  border-bottom-color: #fff;
+  color:#1D1309;
+  border-bottom-color:#1D1309;
 }
 
 @media (min-width: 48em) {

@@ -3,7 +3,21 @@
  * Docs & License: http://arshaw.com/fullcalendar/
  * (c) 2013 Adam Shaw
  */
+html {
+	background:url('../img/landingpage/mainphoto.jpeg') no-repeat;
+	background-size: cover;
+	height:100%;
+}
 
+.jumbotron {
+	opacity: .75;
+	padding: 15px;
+  }
+  
+  .card {
+	opacity: .75;
+	height: 20rem;
+  }
 
 .fc {
 	direction: ltr;
