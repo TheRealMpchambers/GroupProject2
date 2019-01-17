@@ -59,6 +59,13 @@ module.exports = function(app) {
       res.json(dbOwners);
     });
   });
+
+  // getting owners roster
+  app.get("/api/owners/roster", function(req, res) {
+    db.owners.findAll({}).then(function(data) {
+      res.json(data);
+    });
+  });
 };
 
 
