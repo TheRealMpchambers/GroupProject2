@@ -62,8 +62,13 @@ module.exports = function(app) {
 
   // getting owners roster
   app.get("/api/owners/roster", function(req, res) {
-    // notice the lowercase "o" on owners, name of the actual tabel, not the model
-    db.owners.findAll({}).then(function(data) {
+    // notice the lowercase "o" on owners, name of the actual table, not the model
+    // displays all owners, orders it ascending by modified position
+    db.owners.findAll({
+      order: [
+        ["modifiedPos", "ASC"]
+      ]
+    }).then(function(data) {
       res.json(data);
     });
   });
