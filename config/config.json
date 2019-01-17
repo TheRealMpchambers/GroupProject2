@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "YOUR_PASSWORD",
+    "password": "4Children!",
     "database": "cabin_db",
     "host": "localhost",
     "dialect": "mysql"
