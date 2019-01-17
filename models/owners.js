@@ -4,7 +4,7 @@ module.exports = function (sequelize, DataTypes) {
     email: DataTypes.TEXT,
     selecting: DataTypes.BOOLEAN,
     position: DataTypes.INTEGER,
-    // new field created
+    // new field created, used for ordering
     modifiedPos: DataTypes.INTEGER
   });
   return Owners;
