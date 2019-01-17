@@ -62,6 +62,7 @@ module.exports = function(app) {
 
   // getting owners roster
   app.get("/api/owners/roster", function(req, res) {
+    // notice the lowercase "o" on owners, name of the actual tabel, not the model
     db.owners.findAll({}).then(function(data) {
       res.json(data);
     });
