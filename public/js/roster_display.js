@@ -138,6 +138,7 @@ function updateRoster(data) {
 
 $(document).ready(function () {
     // console.log("roster_display.js connected");
+   
     getRoster();
 
 

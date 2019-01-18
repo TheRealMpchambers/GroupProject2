@@ -151,4 +151,11 @@ module.exports = function (app) {
     });
   });
 
+  // getting available weeks
+  app.get("/api/weeks/available", function (req, res) {
+    db.weeks.findAll({}).then(function(data) {
+      res.json(data);
+    });
+  });
+
 };
