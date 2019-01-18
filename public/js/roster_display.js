@@ -38,14 +38,22 @@ function getRoster() {
                     selecting=false;
                 };
 
+                // grab the email again
+                var email = $(this).attr("data-email");
+
+                // grab the name again
+                var name = $(this).attr("data-name");
+
                 // creating the dataObject that will get passed to the put route
                 var dataObject = {
                     id: id,
                     modPos: modPos,
-                    selecting: selecting
-                }
+                    selecting: selecting,
+                    email: email,
+                    name: name
+                };
 
-                // call updateRoster
+                // call updateRoster, which is where the PUT request is actually made
                 updateRoster(dataObject);
 
             });
@@ -67,6 +75,7 @@ function displayRoster(data) {
         var name = rawData[i].ownername;
         var modPos = rawData[i].modifiedPos;
         var selecting = rawData[i].selecting
+        var email = rawData[i].email;
         // console.log(id + " " + name + " " + modPos + " " + selecting);
 
         // builds the individual list item and gives it a class
@@ -78,7 +87,10 @@ function displayRoster(data) {
         
         button.attr("data-id", id);
         button.attr("data-modpos", modPos);
-        button.attr("data-selecting", selecting)
+        button.attr("data-selecting", selecting);
+        button.attr("data-name", name);
+        button.attr("data-email", email);
+
 
         // I will probably comment this out
         temp.attr("data-id", id);
