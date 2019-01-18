@@ -4,17 +4,17 @@ var db = require("../models");
 var mailer = require("./mailer");
 
 // next-to-select helper function
-function emailNextHelper (nextPerson) {
+function emailNextHelper(nextPerson) {
   db.owners.findOne({
-      where: {
-        position: nextPerson
-      }
-    }).then(function (data) {
-      var email = data.email;
-      var name = data.ownername;
-      mailer.sendMessageToNext(email,name);
-    });
-  }
+    where: {
+      position: nextPerson
+    }
+  }).then(function (data) {
+    var email = data.email;
+    var name = data.ownername;
+    mailer.sendMessageToNext(email, name);
+  });
+}
 
 
 
@@ -106,7 +106,7 @@ module.exports = function (app) {
         }
       }
     ).then(function (data) {
-     
+
       // the email to the person who just made the selection
       var email = req.body.email;
       var name = req.body.name;
@@ -135,7 +135,7 @@ module.exports = function (app) {
         });
         // if it's the last person, jump back to the first person in the roster
       } else {
-        newPos=1;
+        newPos = 1;
         db.owners.update({
           selecting: true
         }, {
@@ -147,13 +147,22 @@ module.exports = function (app) {
           emailNextHelper(newPos);
           res.json(data);
         });
-      } 
+      }
     });
   });
 
   // getting available weeks
   app.get("/api/weeks/available", function (req, res) {
-    db.weeks.findAll({}).then(function(data) {
+    db.weeks.findAll(
+      {
+        where: {
+          Available: true
+        },
+        order: [
+          ["StartDate", "ASC"]
+        ]
+      }
+    ).then(function (data) {
       res.json(data);
     });
   });

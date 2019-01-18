@@ -5,6 +5,8 @@
 
 // function that makes the api get request to /api/owners/roster
 function getRoster() {
+    // calling displayWeeks here for a test
+    displayWeeks();
     $.ajax(
         { url: "/api/owners/roster", method: "GET" })
         .then(function (data) {
@@ -128,7 +130,14 @@ function updateRoster(data) {
     );
 }
 
-
+// function that will display that available weeks
+function displayWeeks() {
+    $.ajax(
+        {url: "/api/weeks/available", method: "GET"}
+    ).then(function(data){
+        console.log(data);
+    });
+};
 
 
 
