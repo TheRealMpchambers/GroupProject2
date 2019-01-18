@@ -5,6 +5,11 @@
 
 // function that makes the api get request to /api/owners/roster
 function getRoster() {
+
+    // calling getWeeks function here for a test, need to figure out where it will work best
+    getWeeks();
+
+
     $.ajax(
         { url: "/api/owners/roster", method: "GET" })
         .then(function (data) {
@@ -128,6 +133,45 @@ function updateRoster(data) {
     );
 }
 
+// function that will get available weeks
+function getWeeks() {
+    $.ajax(
+        {url: "/api/weeks/available", method: "GET"}
+    ).then(function(dataWeeks){
+        dropDownWeeks(dataWeeks);
+    });
+};
+
+// function that will display available weeks as a dropdown
+function dropDownWeeks(data) {
+    var rawData = data;
+    // console.log(rawData.length);
+    
+    // select the weeks-dropdown hook
+    var weeksDropdown = $("#weeks-dropdown");
+    
+    
+    // builds the selection parent
+    var dropDown = $("<select id='weeks'>");
+    
+    // for loop to build each selection option for weeks where availabe=true
+    for (var i=0; i < rawData.length; i++) {
+
+        // grabs the data, stores it so it can be used
+        var weekId = rawData[i].id;
+        var startdate = rawData[i].StartDate;
+        var enddate = rawData[i].EndDate;
+
+        // builds the selection
+        var option = $("<option>");
+        option.text(startdate + " to " + enddate);
+        option.attr("value", weekId);
+        dropDown.append(option); 
+    }
+
+    // appends the object to the webpage
+    weeksDropdown.append(dropDown);
+};
 
 
 
@@ -138,6 +182,7 @@ function updateRoster(data) {
 
 $(document).ready(function () {
     // console.log("roster_display.js connected");
+   
     getRoster();
 
 
