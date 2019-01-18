@@ -41,7 +41,7 @@ function getRoster() {
                 // creating the dataObject that will get passed to the put route
                 var dataObject = {
                     id: id,
-                    modifiedPos: modPos,
+                    modPos: modPos,
                     selecting: selecting
                 }
 
@@ -97,16 +97,19 @@ function displayRoster(data) {
 
 // function that makes the api put request to /api/owners/roster/
 function updateRoster(data) {
-    $.ajax("/api/owners/roster", {
+    $.ajax("/api/owners/roster/selector", {
         type: "PUT",
         data: data
     }).then(
         function () {
             // reload the page to get the updated list
+            // HERE IS WHERE I'M GOING TO NEED ANOTHER AJAX CALL
             location.reload();
         }
     );
 }
+
+
 
 
 

@@ -73,18 +73,23 @@ module.exports = function (app) {
     });
   });
 
+
+
+
   // updating owners table
-  // app.put("/api/owners/roster", function (req, res) {
-  //   db.owners.update([
-  //     req.body.selecting, req.body.modifiedPos
-  //   ], {
-  //       where: {
-  //         id: req.body.id
-  //       }
-  //     }).then(function (data) {
-  //       res.json(data);
-  //     });
-  // });
+  app.put("/api/owners/roster/selector", function (req, res) {
+    db.owners.update({
+      selecting: req.body.selecting,
+      modifiedPos: req.body.modPos
+    }, {
+        where: {
+          id: req.body.id
+        }
+      }
+    ).then(function (data) {
+      res.json(data);
+    })
+  })
 
 };
 
