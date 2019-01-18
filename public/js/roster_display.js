@@ -149,26 +149,29 @@ function dropDownWeeks(data) {
     
     // select the weeks-dropdown hook
     var weeksDropdown = $("#weeks-dropdown");
-    var dropDown = $("<select class='weeks'><option value='' selected disabled hidden>Select a Week</option></select>")
-    var temp;
-
     
-    // weeksDropdown.append(dropDown);
     
-
-    // <h3><strong>Question 1</strong></h3>
-    //     <h4>Pizza is your favorite food.</h4>
-    //     <select class="survey-question" id="q1">
-    //         <option value="" selected disabled hidden>Select an Option</option>
-    //         <option value="1">1 (Strongly Disagree)</option>
-    //         <option value="2">2</option>
-    //         <option value="3">3</option>
-    //         <option value="4">4</option>
-    //         <option value="5">5 (Strongly Agree)</option>
-    //     </select>
+    // builds the selection parent
+    var dropDown = $("<select id='weeks'>");
     
+    // for loop to build each selection option for weeks where availabe=true
+    for (var i=0; i < rawData.length; i++) {
 
-}
+        // grabs the data, stores it so it can be used
+        var weekId = rawData[i].id;
+        var startdate = rawData[i].StartDate;
+        var enddate = rawData[i].EndDate;
+
+        // builds the selection
+        var option = $("<option>");
+        option.text(startdate + " to " + enddate);
+        option.attr("value", weekId);
+        dropDown.append(option); 
+    }
+
+    // appends the object to the webpage
+    weeksDropdown.append(dropDown);
+};
 
 
 

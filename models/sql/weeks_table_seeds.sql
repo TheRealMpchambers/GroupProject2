@@ -36,5 +36,20 @@ now(),
 now()
 );
 
+SELECT * FROM weeks;
+
+USE cabin_db;
+UPDATE weeks
+SET
+Available = false
+WHERE id =1;
+
+USE cabin_db;
+UPDATE weeks
+SET
+StartDate= "2017-01-25",
+Available = true
+WHERE id =2;
 
 SELECT * FROM weeks;
+
