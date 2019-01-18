@@ -94,7 +94,7 @@ var mailer = {
             // html line breaks
             htmlMessage += "<br><br>";
             // body of the message
-            htmlMessage += "You have scehduled the cabin for the following week: " + beginDate + " through " + endDate + ".";
+            htmlMessage += "You have scheduled the cabin for the following week: " + beginDate + " through " + endDate + ".";
             // html line breaks
             htmlMessage += "<br><br>";
             // closing to the message
@@ -111,7 +111,7 @@ var mailer = {
             // plain text line breaks
             textMessage += "\n\n";
             // body of the message
-            textMessage += "You have scehduled the cabin for the following week: " + beginDate + " through " + endDate + ".";
+            textMessage += "You have scheduled the cabin for the following week: " + beginDate + " through " + endDate + ".";
             // plain text line breaks
             textMessage += "\n\n";
             // closing to the message

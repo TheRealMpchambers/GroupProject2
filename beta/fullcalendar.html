@@ -10,6 +10,7 @@
 	<script src='jquery-ui.custom.min.js'></script>
 
 	<script src='js/fullcalendar.js'></script>
+	<script src="js/roster_display.js"></script>
 	<script>
 		$(document).ready(function () {
 			var date = new Date();
@@ -229,7 +230,13 @@
 		<div class="jumbotron">
 			<div class="wrap">
 				<div class="card-body">
-					<h5 class="card-title">CARD ONE</h5>
+					<h5 class="card-title">ROSTER</h5>
+					<!-- the hook for the roster display -->
+					<div id="roster-display">
+						<ol id="roster-list">
+
+						</ol>
+					</div>
 				</div>
 			</div>
 		</div>
