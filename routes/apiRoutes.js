@@ -1,5 +1,8 @@
 var db = require("../models");
 
+// require the mailer object
+var mailer = require("./mailer");
+
 module.exports = function (app) {
   // Get all examples
   app.get("/api/schedule", function (req, res) {
@@ -88,6 +91,12 @@ module.exports = function (app) {
       }
     ).then(function (data) {
       res.json(data);
+
+      // the email to the person who just made the selection
+      var email = req.body.email;
+      var name = req.body.name;
+      mailer.sendMessageToCurrent(email, name, "Placeholder 1", "Placeholder 2");
+      
     })
   })
 
