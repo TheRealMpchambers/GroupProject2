@@ -90,15 +90,49 @@ module.exports = function (app) {
         }
       }
     ).then(function (data) {
-      res.json(data);
+      // res.json(data);
 
       // the email to the person who just made the selection
       var email = req.body.email;
       var name = req.body.name;
-      mailer.sendMessageToCurrent(email, name, "Placeholder 1", "Placeholder 2");
-      
-    })
-  })
+      // mailer.sendMessageToCurrent(email, name, "Placeholder 1", "Placeholder 2");
+
+      // sequelize request that will update the the table so the next person's selecting will be set to true
+      // if the initial position or initial roster position is anybody but the last person, do this:
+      if (req.body.initPos < 4) {
+        // pull in the initial position
+        var newPos = req.body.initPos;
+        // make sure it's a number
+        newPos = parseInt(newPos);
+        // add one to newPos
+        newPos = newPos + 1;
+        // update the next person in the roster so their selecting===true
+        db.owners.update({
+          selecting: true
+        }, {
+            where: {
+              position: newPos
+            }
+          }
+        ).then(function (data) {
+          res.json(data);
+        });
+        // if it's the last person, jump back to the first person in the roster
+      } else {
+        newPos=1;
+        db.owners.update({
+          selecting: true
+        }, {
+            where: {
+              position: newPos
+            }
+          }
+        ).then(function (data) {
+          res.json(data);
+        });
+      } 
+    });
+  });
 
 };
 

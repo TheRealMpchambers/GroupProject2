@@ -44,13 +44,18 @@ function getRoster() {
                 // grab the name again
                 var name = $(this).attr("data-name");
 
+                // grab the initial position again, turn it into a number
+                var initPos = $(this).attr("data-initpos");
+                initPos = parseInt(initPos);
+
                 // creating the dataObject that will get passed to the put route
                 var dataObject = {
                     id: id,
                     modPos: modPos,
                     selecting: selecting,
                     email: email,
-                    name: name
+                    name: name,
+                    initPos: initPos
                 };
 
                 // call updateRoster, which is where the PUT request is actually made
@@ -73,8 +78,9 @@ function displayRoster(data) {
     for (var i = 0; i < rawData.length; i++) {
         var id = rawData[i].id;
         var name = rawData[i].ownername;
+        var initPos = rawData[i].position;
         var modPos = rawData[i].modifiedPos;
-        var selecting = rawData[i].selecting
+        var selecting = rawData[i].selecting;
         var email = rawData[i].email;
         // console.log(id + " " + name + " " + modPos + " " + selecting);
 
@@ -90,6 +96,7 @@ function displayRoster(data) {
         button.attr("data-selecting", selecting);
         button.attr("data-name", name);
         button.attr("data-email", email);
+        button.attr("data-initpos", initPos);
 
 
         // I will probably comment this out
