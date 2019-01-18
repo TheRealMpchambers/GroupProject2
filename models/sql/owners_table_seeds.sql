@@ -15,13 +15,24 @@ SET
 selecting = true,
 modifiedPos = 1
 WHERE id = 1;
+
+
+UPDATE owners
+SET selecting = false,
+email = "eghove@gmail.com",
+modifiedPos = 2
+WHERE id = 2;
+
+UPDATE owners
+SET selecting = false,
+email = "eghove@gmail.com",
+modifiedPos = 3
+WHERE id = 3;
+
+UPDATE owners
+SET selecting = false,
+email = "eghove@gmail.com",
+modifiedPos = 4
+WHERE id = 4;
+
 SELECT * FROM owners;
-
-UPDATE owners
-SET selecting = false
-WHERE id = 2;
-
-UPDATE owners
-SET modifiedPos = 2
-WHERE id = 2;
-
