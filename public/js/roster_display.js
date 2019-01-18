@@ -5,8 +5,11 @@
 
 // function that makes the api get request to /api/owners/roster
 function getRoster() {
-    // calling displayWeeks here for a test
-    displayWeeks();
+
+    // calling getWeeks function here for a test, need to figure out where it will work best
+    getWeeks();
+
+
     $.ajax(
         { url: "/api/owners/roster", method: "GET" })
         .then(function (data) {
@@ -130,14 +133,43 @@ function updateRoster(data) {
     );
 }
 
-// function that will display that available weeks
-function displayWeeks() {
+// function that will get available weeks
+function getWeeks() {
     $.ajax(
         {url: "/api/weeks/available", method: "GET"}
-    ).then(function(data){
-        console.log(data);
+    ).then(function(dataWeeks){
+        dropDownWeeks(dataWeeks);
     });
 };
+
+// function that will display available weeks as a dropdown
+function dropDownWeeks(data) {
+    var rawData = data;
+    // console.log(rawData.length);
+    
+    // select the weeks-dropdown hook
+    var weeksDropdown = $("#weeks-dropdown");
+    var dropDown = $("<select class='weeks'><option value='' selected disabled hidden>Select a Week</option></select>")
+    var temp;
+
+    
+    // weeksDropdown.append(dropDown);
+    
+
+    // <h3><strong>Question 1</strong></h3>
+    //     <h4>Pizza is your favorite food.</h4>
+    //     <select class="survey-question" id="q1">
+    //         <option value="" selected disabled hidden>Select an Option</option>
+    //         <option value="1">1 (Strongly Disagree)</option>
+    //         <option value="2">2</option>
+    //         <option value="3">3</option>
+    //         <option value="4">4</option>
+    //         <option value="5">5 (Strongly Agree)</option>
+    //     </select>
+    
+
+}
+
 
 
 
