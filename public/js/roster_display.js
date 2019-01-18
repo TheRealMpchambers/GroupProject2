@@ -3,13 +3,52 @@
 
 // FUNCTIONS
 
-// function that makes the api request to /api/owners/roster
+// function that makes the api get request to /api/owners/roster
 function getRoster() {
     $.ajax(
         { url: "/api/owners/roster", method: "GET" })
         .then(function (data) {
             // console.log(data);
+            // call the display roster function
             displayRoster(data);
+
+            // roster button listener
+            $("#roster-submit").on("click", function (event) {
+                event.preventDefault();
+                console.log("Clicked!");
+
+                // grab the id again, turn it into a number
+                var id = $(this).attr("data-id");
+                id = parseInt(id);
+
+                // grab the modpos again, turn it into a number, add 4
+                var modPos = $(this).attr("data-modpos");
+                modPos = parseInt(modPos);
+                modPos += 4;
+                
+                // grab selecting again, turn it into a boolean
+                var selecting = $(this).attr("data-selecting");
+                if (selecting == "true") {
+                    selecting=true;
+                } else {
+                    selecting=false;
+                };
+                // turn selecting into false to pass to the api route
+                if (selecting===true) {
+                    selecting=false;
+                };
+
+                // creating the dataObject that will get passed to the put route
+                var dataObject = {
+                    id: id,
+                    modifiedPos: modPos,
+                    selecting: selecting
+                }
+
+                // call updateRoster
+                updateRoster(dataObject);
+
+            });
         });
 };
 
@@ -22,8 +61,6 @@ function displayRoster(data) {
     // select the roster-display hook
     var rosterDislay = $("#roster-list");
 
-
-
     // for loop that's going to build the roster
     for (var i = 0; i < rawData.length; i++) {
         var id = rawData[i].id;
@@ -31,28 +68,45 @@ function displayRoster(data) {
         var modPos = rawData[i].modifiedPos;
         var selecting = rawData[i].selecting
         // console.log(id + " " + name + " " + modPos + " " + selecting);
-        var temp = $("<li>" +" " + name + " " + "</li>");
+
+        // builds the individual list item and gives it a class
+        var temp = $("<li>" + " " + name + " " + "</li>");
         temp.addClass("list-item");
 
-        var button = $("<button>Submit</button>");
-        button.addClass("roster-submit");
+        // builds the button and gives it some data attributes
+        var button = $("<button id='roster-submit'>Submit</button>");
+        
         button.attr("data-id", id);
         button.attr("data-modpos", modPos);
         button.attr("data-selecting", selecting)
 
-
+        // I will probably comment this out
         temp.attr("data-id", id);
         temp.attr("data-modpos", modPos);
         temp.attr("data-selecting", selecting);
+
+        // if the selecting is true, the button will appear next to the name
         if (selecting === true) {
             temp.append(button);
         };
+
+        // puts the temp onto the page
         rosterDislay.append(temp);
     }
-
-
-
 };
+
+// function that makes the api put request to /api/owners/roster/
+function updateRoster(data) {
+    $.ajax("/api/owners/roster", {
+        type: "PUT",
+        data: data
+    }).then(
+        function () {
+            // reload the page to get the updated list
+            location.reload();
+        }
+    );
+}
 
 
 
@@ -63,6 +117,9 @@ function displayRoster(data) {
 $(document).ready(function () {
     // console.log("roster_display.js connected");
     getRoster();
+
+
+    
 
 
 
