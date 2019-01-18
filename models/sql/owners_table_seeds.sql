@@ -8,4 +8,12 @@ VALUES
     ("Jane Frost", "jane@jane.com", false, 3, 3, now(), now() ),
     ("Tester Guy", "fightingmongooses4@gmail.com", false, 4, 4, now(), now() );
     
+UPDATE owners
+SET selecting = false
+WHERE id = 1;
+
+UPDATE owners
+SET selecting = true
+WHERE id = 2;
+
 SELECT * FROM owners;
