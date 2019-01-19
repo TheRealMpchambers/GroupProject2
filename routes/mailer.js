@@ -4,7 +4,7 @@
 require("dotenv").config();
 
 // require keys.js, where the secure tokens are pulled
-var keys = require("../config/keys.js");
+var keys = require("../keys.js");
 
 // require nodemailer
 var nodemailer = require("nodemailer");
