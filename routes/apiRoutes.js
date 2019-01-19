@@ -22,7 +22,7 @@ function emailNextHelper(nextPerson) {
 module.exports = function (app) {
   // Get all examples
   app.get("/api/schedule", function (req, res) {
-    db.Schedule.findAll({}).then(function (dbSchedule) {
+    db.schedule.findAll({}).then(function (dbSchedule) {
       res.json(dbSchedule);
     });
   });
@@ -44,7 +44,7 @@ module.exports = function (app) {
   });
 
   app.get("/api/weeks", function (req, res) {
-    db.Weeks.findAll({}).then(function (dbWeeks) {
+    db.weeks.findAll({}).then(function (dbWeeks) {
       res.json(dbWeeks);
     });
   });

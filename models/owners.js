@@ -7,5 +7,13 @@ module.exports = function (sequelize, DataTypes) {
     // new field created, used for ordering
     modifiedPos: DataTypes.INTEGER
   });
+
+  Owners.associate = function(models) {
+    Owners.hasMany(models.weeks, {
+      onDelete: "cascade"
+    });
+  };
+
+
   return Owners;
 };
