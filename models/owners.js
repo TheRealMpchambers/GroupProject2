@@ -1,4 +1,4 @@
-module.exports = function (sequelize, DataTypes) {
+module.exports = function(sequelize, DataTypes) {
   var Owners = sequelize.define("owners", {
     ownername: DataTypes.STRING,
     email: DataTypes.TEXT,
@@ -13,7 +13,6 @@ module.exports = function (sequelize, DataTypes) {
       onDelete: "cascade"
     });
   };
-
 
   return Owners;
 };
