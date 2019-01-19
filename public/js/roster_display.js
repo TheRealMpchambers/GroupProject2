@@ -17,6 +17,10 @@ function getRoster() {
       event.preventDefault();
       console.log("Clicked!");
 
+      // grab the weeks id
+      var weeksID = $("#weeks").val().trim();
+      
+
       // grab the id again, turn it into a number
       var id = $(this).attr("data-id");
       id = parseInt(id);
@@ -159,6 +163,7 @@ function dropDownWeeks(data) {
   // appends the object to the webpage
   weeksDropdown.append(dropDown);
 }
+
 
 // MAIN PROCESSES
 
