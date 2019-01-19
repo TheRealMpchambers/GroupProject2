@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 var db = require("../models");
 
 // require the mailer object
@@ -87,16 +88,13 @@ module.exports = function (app) {
     // notice the lowercase "o" on owners, name of the actual table, not the model
     // displays all owners, orders it ascending by modified position
     db.owners.findAll({
-      order: [
-        ["modifiedPos", "ASC"]
-      ]
-    }).then(function (data) {
-      res.json(data);
-    });
+      order: [["modifiedPos", "ASC"]]
+    // eslint-disable-next-line prettier/prettier
+    })
+      .then(function(data) {
+        res.json(data);
+      });
   });
-
-
-
 
   // updating owners table
   app.put("/api/owners/roster/selector", function (req, res) {
@@ -104,10 +102,10 @@ module.exports = function (app) {
       selecting: req.body.selecting,
       modifiedPos: req.body.modPos
     }, {
-        where: {
-          id: req.body.id
-        }
+      where: {
+        id: req.body.id
       }
+    }
     ).then(function (data) {
 
       // the email to the person who just made the selection
@@ -128,10 +126,10 @@ module.exports = function (app) {
         db.owners.update({
           selecting: true
         }, {
-            where: {
-              position: newPos
-            }
+          where: {
+            position: newPos
           }
+        }
         ).then(function (data) {
           emailNextHelper(newPos);
           res.json(data);
@@ -142,10 +140,10 @@ module.exports = function (app) {
         db.owners.update({
           selecting: true
         }, {
-            where: {
-              position: newPos
-            }
+          where: {
+            position: newPos
           }
+        }
         ).then(function (data) {
           emailNextHelper(newPos);
           res.json(data);
