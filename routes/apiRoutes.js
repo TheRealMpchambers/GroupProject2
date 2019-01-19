@@ -44,10 +44,13 @@ module.exports = function (app) {
   });
 
   app.get("/api/weeks", function (req, res) {
-    db.weeks.findAll({}).then(function (dbWeeks) {
+    db.owners.findAll({
+      include: [db.weeks]
+    }).then(function (dbWeeks) {
       res.json(dbWeeks);
     });
   });
+
 
   app.post("/api/weeks", function (req, res) {
     db.Weeks.create(req.body).then(function (dbWeeks) {

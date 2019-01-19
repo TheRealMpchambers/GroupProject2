@@ -4,25 +4,35 @@
 <head>
 	<link href='styles/fullcalendar.css' rel='stylesheet' type="text/css" />
 	<link href='styles/fullcalendar.print.css' rel='stylesheet' type="text/css" media='print' />
-	<link rel="icon" href="img/landingpage/iconcottage.png"/>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
+	<link rel="icon" href="img/landingpage/iconcottage.png" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	 crossorigin="anonymous" />
 	<script src='jquery-1.10.2.js'></script>
 	<script src='jquery-ui.custom.min.js'></script>
 
 	<script src='js/fullcalendar.js'></script>
 	<script src="js/roster_display.js"></script>
-	
+
 	<script>
 		$(document).ready(function () {
 
 			$.ajax({
-							url: "/api/weeks",
-							method: "GET"
-						})
-						.then(function (response) {
-							console.log(response);
-							console.log("------------------------------------");
-						})
+					url: "/api/weeks",
+					method: "GET"
+				})
+				.then(function (response) {
+					// console.log(response);
+console.log("HI")
+					console.log(response.length)
+					var events =  [{
+						title: "gg",
+						start: new Date(y, m, d, 12, 0),
+						end: new Date(y, m, d, 14, 0),
+						allDay: false,
+						className: 'important'
+					}]
+
+				})
 
 
 
@@ -129,51 +139,53 @@
 
 				},
 
+
+				
 				events: [{
 						title: 'All Day Event',
 						start: new Date(y, m, 1)
 					},
 					{
-						id: 999,
-						title: 'Repeating Event',
-						start: new Date(y, m, d - 3, 16, 0),
-						allDay: false,
-						className: 'info'
-					},
-					{
-						id: 999,
-						title: 'Repeating Event',
-						start: new Date(y, m, d + 4, 16, 0),
-						allDay: false,
-						className: 'info'
-					},
-					{
-						title: 'Meeting',
-						start: new Date(y, m, d, 10, 30),
-						allDay: false,
-						className: 'important'
-					},
-					{
-						title: 'Lunch',
-						start: new Date(y, m, d, 12, 0),
-						end: new Date(y, m, d, 14, 0),
-						allDay: false,
-						className: 'important'
-					},
-					{
-						title: 'Birthday Party',
-						start: new Date(y, m, d + 1, 19, 0),
-						end: new Date(y, m, d + 1, 22, 30),
-						allDay: false,
-					},
-					{
-						title: 'Click for Google',
-						start: new Date(y, m, 28),
-						end: new Date(y, m, 29),
-						url: 'http://google.com/',
-						className: 'success'
-					}
-				],
+				// 		id: 999,
+				// 		title: 'Repeating Event',
+				// 		start: new Date(y, m, d - 3, 16, 0),
+				// 		allDay: false,
+				// 		className: 'info'
+				// 	},
+				// 	{
+				// 		id: 999,
+				// 		title: 'Repeating Event',
+				// 		start: new Date(y, m, d + 4, 16, 0),
+				// 		allDay: false,
+				// 		className: 'info'
+				// 	},
+				// 	{
+				// 		title: 'Meeting',
+				// 		start: new Date(y, m, d, 10, 30),
+				// 		allDay: false,
+				// 		className: 'important'
+				// 	},
+				// 	{
+				// 		title: 'Lunch',
+				// 		start: new Date(y, m, d, 12, 0),
+				// 		end: new Date(y, m, d, 14, 0),
+				// 		allDay: false,
+				// 		className: 'important'
+				// 	},
+				// 	{
+				// 		title: 'Birthday Party',
+				// 		start: new Date(y, m, d + 1, 19, 0),
+				// 		end: new Date(y, m, d + 1, 22, 30),
+				// 		allDay: false,
+				// 	},
+				// 	{
+				// 		title: 'Click for Google',
+				// 		start: new Date(y, m, 28),
+				// 		end: new Date(y, m, 29),
+				// 		url: 'http://google.com/',
+				// 		className: 'success'
+				// 	}
+				// ],
 			});
 
 
