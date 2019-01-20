@@ -18,8 +18,8 @@ function getRoster() {
       console.log("Clicked!");
 
       // grab the weeks id
+      // eslint-disable-next-line prettier/prettier
       var weeksID = $("#weeks").val().trim();
-      
 
       // grab the id again, turn it into a number
       var id = $(this).attr("data-id");
@@ -59,7 +59,8 @@ function getRoster() {
         selecting: selecting,
         email: email,
         name: name,
-        initPos: initPos
+        initPos: initPos,
+        weeksID: weeksID
       };
 
       // call updateRoster, which is where the PUT request is actually made
@@ -99,11 +100,6 @@ function displayRoster(data) {
     button.attr("data-name", name);
     button.attr("data-email", email);
     button.attr("data-initpos", initPos);
-
-    // I will probably comment this out
-    temp.attr("data-id", id);
-    temp.attr("data-modpos", modPos);
-    temp.attr("data-selecting", selecting);
 
     // if the selecting is true, the button will appear next to the name
     if (selecting === true) {
@@ -163,7 +159,6 @@ function dropDownWeeks(data) {
   // appends the object to the webpage
   weeksDropdown.append(dropDown);
 }
-
 
 // MAIN PROCESSES
 
