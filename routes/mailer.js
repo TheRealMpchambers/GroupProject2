@@ -78,7 +78,7 @@ var mailer = {
     },
 
     // function that sends email to the person who just selected their week at the cabin. Takes in their email address, name, begin date of reservation, end date of reservation.
-    sendMessageToCurrent: async function (recipientEmail, recipientName, beginDate, endDate) {
+    sendMessageToCurrent: async function (recipientEmail, recipientName, dates) {
         // sets up the email
         var transporter = nodemailer.createTransport({
             service: "gmail",
@@ -89,12 +89,12 @@ var mailer = {
         });
 
         // function that builds the HTML version of the message, takes in the name, begin date of reservation, and end date of reservation of the recipient.
-        var buildHTMLMessage = function (name, beginDate, endDate) {
+        var buildHTMLMessage = function (name, dates) {
             var htmlMessage = "Dear " + name + ",";
             // html line breaks
             htmlMessage += "<br><br>";
             // body of the message
-            htmlMessage += "You have scheduled the cabin for the following week: " + beginDate + " through " + endDate + ".";
+            htmlMessage += "You have scheduled the cabin for the following week: " + dates + ".";
             // html line breaks
             htmlMessage += "<br><br>";
             // closing to the message
@@ -106,12 +106,12 @@ var mailer = {
         };
 
         // function that builds the plaintext version of the message, takes in the name of the recipient
-        var buildPlaintextMessage = function (name, beginDate, endDate) {
+        var buildPlaintextMessage = function (name, dates) {
             var textMessage = "Dear " + name + ",";
             // plain text line breaks
             textMessage += "\n\n";
             // body of the message
-            textMessage += "You have scheduled the cabin for the following week: " + beginDate + " through " + endDate + ".";
+            textMessage += "You have scheduled the cabin for the following week: " + dates + ".";
             // plain text line breaks
             textMessage += "\n\n";
             // closing to the message
@@ -127,8 +127,8 @@ var mailer = {
             from: "fightingmongooses4@gmail.com",
             to: recipientEmail,
             subject: recipientName + ": You've scheduled your week at the cabin!",
-            text: buildPlaintextMessage(recipientName, beginDate, endDate),
-            html: buildHTMLMessage(recipientName, beginDate, endDate)
+            text: buildPlaintextMessage(recipientName, dates),
+            html: buildHTMLMessage(recipientName, dates)
         };
 
         // sends the message

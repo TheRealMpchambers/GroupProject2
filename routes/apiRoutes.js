@@ -111,7 +111,8 @@ module.exports = function (app) {
       // the email to the person who just made the selection
       var email = req.body.email;
       var name = req.body.name;
-      mailer.sendMessageToCurrent(email, name, "Placeholder 1", "Placeholder 2");
+      var dates = req.body.period;
+      mailer.sendMessageToCurrent(email, name, dates);
 
       // sequelize request that will update the the table so the next person's selecting will be set to true
       // if the initial position or initial roster position is anybody but the last person, do this:
