@@ -21,6 +21,10 @@ function getRoster() {
       // eslint-disable-next-line prettier/prettier
       var weeksID = $("#weeks").val().trim();
 
+      // grab the text value in weeks
+      var period = $("#weeks :selected").text();
+      period = period.toString();
+
       // grab the id again, turn it into a number
       var id = $(this).attr("data-id");
       id = parseInt(id);
@@ -60,7 +64,8 @@ function getRoster() {
         email: email,
         name: name,
         initPos: initPos,
-        weeksID: weeksID
+        weeksID: weeksID,
+        period: period
       };
 
       // call updateRoster, which is where the PUT request is actually made
