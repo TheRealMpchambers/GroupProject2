@@ -1,55 +1,99 @@
 USE cabin_db;
 
-INSERT INTO weeks (StartDate, EndDate, Available, createdAt, updatedAt)
+-- Seed Insert of 12 summer weeks
+INSERT INTO weeks
+    (StartDate, EndDate, Available, createdAt, updatedAt)
 VALUES
-(
-"2019-01-01",
-"2019-01-08",
-true,
-now(),
-now()
-);
+    (
+        "2019-05-24",
+        "2019-05-30",
+        true,
+        now(),
+        now()
+    ),
+    (
+        "2019-05-31",
+        "2019-06-06",
+        true,
+        now(),
+        now()
+    ),
+    (
+        "2019-06-07",
+        "2019-06-13",
+        true,
+        now(),
+        now()
+    ),
+    (
+        "2019-06-14",
+        "2019-06-20",
+        true,
+        now(),
+        now()
+    ),
+    (
+        "2019-06-21",
+        "2019-06-27",
+        true,
+        now(),
+        now()
+    ),
+    (
+        "2019-06-28",
+        "2019-07-04",
+        true,
+        now(),
+        now()
+    ),
+    (
+        "2019-07-05",
+        "2019-07-11",
+        true,
+        now(),
+        now()
+    ),
+    (
+        "2019-07-12",
+        "2019-07-18",
+        true,
+        now(),
+        now()
+    ),
+    (
+        "2019-07-19",
+        "2019-07-25",
+        true,
+        now(),
+        now()
+    ),
+    (
+        "2019-07-26",
+        "2019-08-01",
+        true,
+        now(),
+        now()
+    ),
+    (
+        "2019-08-02",
+        "2019-08-08",
+        true,
+        now(),
+        now()
+    ),
+    (
+        "2019-08-09",
+        "2019-08-15",
+        true,
+        now(),
+        now()
+    );
 
-USE cabin_db;
+    SELECT *
+    FROM weeks;
 
-INSERT INTO weeks (StartDate, EndDate, Available, createdAt, updatedAt)
-VALUES
-(
-"2019-01-09",
-"2019-01-16",
-true,
-now(),
-now()
-),
-(
-"2019-01-17",
-"2019-01-24",
-true,
-now(),
-now()
-),
-(
-"2019-01-25",
-"2019-02-01",
-true,
-now(),
-now()
-);
 
-SELECT * FROM weeks;
 
-USE cabin_db;
-UPDATE weeks
-SET
-Available = false
-WHERE id =1;
 
-USE cabin_db;
-UPDATE weeks
-SET
-StartDate= "2017-01-25",
-Available = true
-WHERE id =2;
 
-SELECT * FROM weeks;
 
