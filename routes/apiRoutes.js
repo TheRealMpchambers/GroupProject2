@@ -106,7 +106,7 @@ module.exports = function (app) {
         id: req.body.id
       }
     }
-    ).then(function (data) {
+    ).then(function () {
 
       // the email to the person who just made the selection
       var email = req.body.email;
@@ -130,9 +130,20 @@ module.exports = function (app) {
             position: newPos
           }
         }
-        ).then(function (data) {
+        ).then(function () {
           emailNextHelper(newPos);
-          res.json(data);
+          // the sequelize call that should update the weeks table
+          db.weeks.update({
+            Available: false,
+            ownerId: req.body.id
+          }, {
+            where: {
+              id: req.body.weeksID
+            }
+          }
+          ).then(function(data) {
+            res.json(data);
+          });
         });
         // if it's the last person, jump back to the first person in the roster
       } else {
@@ -144,9 +155,19 @@ module.exports = function (app) {
             position: newPos
           }
         }
-        ).then(function (data) {
+        ).then(function () {
           emailNextHelper(newPos);
-          res.json(data);
+          db.weeks.update({
+            Available: false,
+            ownerId: req.body.id
+          }, {
+            where: {
+              id: req.body.weeksID
+            }
+          }
+          ).then(function(data) {
+            res.json(data);
+          });
         });
       }
     });
