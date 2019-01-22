@@ -28,7 +28,7 @@ var mailer = {
             // html line breaks
             htmlMessage += "<br><br>";
             // body of the message
-            htmlMessage += "It is your turn to schedule the cabin. To do so, visit this website: <a href='www.test.com'> www.test.com</a>.";
+            htmlMessage += "It is your turn to schedule the cabin. To do so, visit this website: <a href='https://mighty-atoll-69238.herokuapp.com/'> https://mighty-atoll-69238.herokuapp.com/</a>.";
             // html line breaks
             htmlMessage += "<br><br>";
             // closing to the message
@@ -45,7 +45,7 @@ var mailer = {
             // plain text line breaks
             textMessage += "\n\n";
             // body of the message
-            textMessage += "It is your turn to schedule the cabin. To do so, visit this website: www.test.com .";
+            textMessage += "It is your turn to schedule the cabin. To do so, visit this website: https://mighty-atoll-69238.herokuapp.com/ .";
             // plain text line breaks
             textMessage += "\n\n";
             // closing to the message
