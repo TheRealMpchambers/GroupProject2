@@ -9,6 +9,11 @@ html {
 	height:100%;
 }
 
+body{
+	background-color: transparent !important;
+	padding-top: 50px;
+}
+
 .navbar-light .navbar-nav .active>.nav-link, 
 .navbar-light .navbar-nav .nav-link.active, 
 .navbar-light .navbar-nav .nav-link.show, 
@@ -26,7 +31,7 @@ font-weight: bold;
 
 .jumbotron {
 	opacity: .75;
-	padding: 15px;
+	padding: 30px;
   }
   
   .card {
